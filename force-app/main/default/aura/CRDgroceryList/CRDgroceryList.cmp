@@ -1,0 +1,18 @@
+<aura:component controller="CRDgroceryListApex" implements="flexipage:availableForAllPageTypes" access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    
+    <aura:attribute name="mycolumns" type="List"/>
+    <aura:attribute name="gList" type="Grocery_List__c[]"/>
+    <aura:attribute name="fields" type="String" default="Name"/>
+
+        <div>
+        <lightning:card title="Grocery Lists">
+            <lightning:datatable data="{!v.gList}" columns="{!v.mycolumns}" keyField="id" onrowaction="{!c.handleRowAction}"/>
+        </lightning:card>
+    </div>
+        <div>
+            <lightning:card title="Add a new Grocery List">
+            <lightning:recordForm objectApiName="Grocery_List__c" fields="{!v.fields}"/>
+            </lightning:card>
+    </div>
+</aura:component>
